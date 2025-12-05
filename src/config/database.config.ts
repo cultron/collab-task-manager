@@ -12,4 +12,7 @@ export const database: DataSourceOptions = {
   // Environment Variables store as a string but this prop expects a boolean value.
   synchronize: /^true$/i.test(config.DATABASE_SYNC),
   logging: config.DATABASE_LOGGING,
+  ssl: /^true$/i.test(config.DATABASE_SSL)
+    ? { rejectUnauthorized: false }
+    : false,
 };

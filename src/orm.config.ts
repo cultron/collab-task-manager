@@ -7,7 +7,7 @@ import {
 import { join } from 'path';
 import AppConfig from './config';
 
-const sslConfig = process.env.DB_SSL
+const sslConfig = /^true$/i.test(process.env.DATABASE_SSL || '')
   ? {
       ssl: true,
       extra: {

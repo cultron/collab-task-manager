@@ -27,6 +27,7 @@ export interface EnvConfigOptions {
     | boolean
     | 'all'
     | ('query' | 'schema' | 'error' | 'warn' | 'info' | 'log' | 'migration')[];
+  DATABASE_SSL: string;
   ENV: 'local' | 'dev' | 'staging' | 'production';
   STRIPE_CHECKOUT_CANCEL_URL: string;
   STRIPE_CHECKOUT_SUCCESS_URL: string;
@@ -56,6 +57,7 @@ const defaultConfig: EnvConfigOptions = {
   DATABASE_SCHEMA: 'apso_test',
   DATABASE_SYNC: 'false',
   DATABASE_LOGGING: 'all',
+  DATABASE_SSL: 'false',
   ENV: 'local',
   STRIPE_CHECKOUT_CANCEL_URL: '',
   STRIPE_CHECKOUT_SUCCESS_URL: '',

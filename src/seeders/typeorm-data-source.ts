@@ -7,9 +7,17 @@ const devPGOptions = {
   port: parseInt(process.env.DATABASE_PORT) || 5432,
   username: process.env.DATABASE_USERNAME,
   password: process.env.DATABASE_PASSWORD,
+  // SSL required for Neon PostgreSQL
+  ssl: /^true$/i.test(process.env.DATABASE_SSL || '')
+    ? { rejectUnauthorized: false }
+    : false,
 };
 
-const prodPGOptions = { url: process.env.DATABASE_URL };
+const prodPGOptions = {
+  url: process.env.DATABASE_URL,
+  // SSL for production (DATABASE_URL includes sslmode but TypeORM needs this too)
+  ssl: { rejectUnauthorized: false },
+};
 
 let options: DataSourceOptions & SeederOptions = {
   type: 'postgres',
